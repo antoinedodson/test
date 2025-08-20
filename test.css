@@ -1,0 +1,62 @@
+/* Slide-out menu */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  gap: 1.5rem;
+  transition: 0.3s ease;
+  z-index: 1000;
+}
+
+.side-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.side-menu a:hover {
+  color: #7fff00;
+}
+
+.side-menu.active {
+  left: 0;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
+  z-index: 900;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+const menuToggle = document.getElementById("menu-toggle");
+const sideMenu = document.getElementById("side-menu");
+const overlay = document.getElementById("overlay");
+
+menuToggle.addEventListener("click", () => {
+  sideMenu.classList.toggle("active");
+  overlay.classList.toggle("active");
+});
+
+overlay.addEventListener("click", () => {
+  sideMenu.classList.remove("active");
+  overlay.classList.remove("active");
+});
